@@ -135,7 +135,7 @@ bot.dialog('/checkintent', [
 		builder.Prompts.text(session, 'Hello $name, how can I help you today?');
 	},
 	function (session, results) {
-		switch(results.response) {
+		switch("Tell me a joke.") {
 			case "Tell me a joke.":
 				session.beginDialog('/telljoke');
 			case "Physics":
