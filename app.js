@@ -133,7 +133,6 @@ bot.dialog('/profile', [
 bot.dialog('/checkintent', [
 	function (session) {
 		builder.Prompts.text(session, 'Hello $name, how can I help you today?');
-		next();
 	},
 	function (session, results) {
 		var response = results.response;
@@ -142,7 +141,7 @@ bot.dialog('/checkintent', [
 				session.beginDialog('/telljoke');
 			case "Physics":
 				session.beginDialog('/physics');
-			case: "Mathematics":
+			case "Mathematics":
 				session.beginDialog('/mathematics');
 		}
 	}
