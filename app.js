@@ -17,7 +17,7 @@ server.post('/api/messages', connector.listen());
 
 var mathntQuestions = [
 	"True or False: Sum of two positive even numbers is always even.",
-	"True or False: There are infinitely many primes."
+	"True or False: There are infinitely many primes.",
 	"True or False: Sum of two even numbers is always even.",
 	"What is the 10th prime number?",
 	"What is the largest prime divisor of 50?",
@@ -37,7 +37,7 @@ var mathntAnswers = [
 
 var mathcnQuestions = [
 	"True or False: i, the square root of -1, is a real number.",
-	"True or False: The magnitude of 3i is -3."
+	"True or False: The magnitude of 3i is -3.",
 	"If x=1+i, what is xx*?",
 	"Find the magnitude of 3+4i",
 	"True or False: Roots of polynomials with integer coefficients cannot be complex.",
@@ -89,7 +89,7 @@ var physicsemAnswers = [
 
 var physicssrQuestions = [
 	"True or False: An object in motion is perceived to be shorter when viewed by a stationary observer.",
-	"True or False: The faster you move, the slower time passes around you."
+	"True or False: The faster you move, the slower time passes around you.",
 	"Find the perceived frequency of a 500GHz electromagnetic wave when viewed by an observer moving towards the wave at 5c/13."
 ];
 
