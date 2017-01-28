@@ -136,16 +136,7 @@ bot.dialog('/checkintent', [
 	}
 	function (session, results) {
 		var response = results.response;
-		switch(response) {
-			case "Tell me a joke.":
-				session.beginDialog('/telljoke');
-			case "Physics":
-				session.beginDialog('/physics');
-			case "Mathematics":
-				session.beginDialog('/mathematics');
-			default:
-				builder.Prompts.text(session, "Sorry! I don't understand what you are trying to say!");
-		}
+		session.send('Your response was %s', response);
 	}
 ]);
 
