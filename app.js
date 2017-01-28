@@ -134,7 +134,7 @@ bot.dialog('/checkintent', [
 	function (session) {
 		builder.Prompts.text(session, 'Hello $name, how can I help you today?');
 	}
-	/*function (session, results) {
+	function (session, results) {
 		var response = results.response;
 		switch(response) {
 			case "Tell me a joke.":
@@ -143,8 +143,10 @@ bot.dialog('/checkintent', [
 				session.beginDialog('/physics');
 			case "Mathematics":
 				session.beginDialog('/mathematics');
+			default:
+				builder.Prompts.text(session, "Sorry! I don't understand what you are trying to say!");
 		}
-	}*/
+	}
 ]);
 
 bot.dialog('/telljoke', [
