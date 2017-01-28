@@ -119,8 +119,7 @@ bot.dialog('/', [
         }
     },
     function (session, results) {
-	var n = 3;
-        session.send("Hello %s, here's a random number!" + n.toString(), session.userData.name);
+        session.send("Hello %s, here's a random number!", session.userData.name);
     }
 ]);
 
