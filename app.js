@@ -115,12 +115,8 @@ bot.dialog('/', [
         if (!session.userData.name) {
             session.beginDialog('/profile');
         } else {
-            next();
+            session.beginDialog('/checkintent');
         }
-    },
-    function (session, results) {
-        session.beginDialog('/checkintent');
-		//session.send("Hello %s, what is your intent?", session.userData.name);
     }
 ]);
 
@@ -150,7 +146,7 @@ bot.dialog('/checkintent', [
 	}
 ]);
 
-bot.dialog('/telljoke'), [
+bot.dialog('/telljoke', [
 	function(session) {
 		var n = Math.floor(Math.random() * 7);
 		builder.Prompts.text(session, jokes[n]);
@@ -158,7 +154,7 @@ bot.dialog('/telljoke'), [
 	}
 ]);
 
-bot.dialog('/physics'), [
+bot.dialog('/physics', [
 	function(session) {
 		var n = Math.floor(Math.random() * 7);
 		builder.Prompts.text(session, jokes[n]);
@@ -166,7 +162,7 @@ bot.dialog('/physics'), [
 	}
 ]);
 
-bot.dialog('/mathematics'), [
+bot.dialog('/mathematics', [
 	function(session) {
 		var n = Math.floor(Math.random() * 7);
 		builder.Prompts.text(session, jokes[n]);
