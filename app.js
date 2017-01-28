@@ -119,8 +119,8 @@ bot.dialog('/', [
         }
     },
     function (session, results) {
-		var n = Math.random();
-        session.send("Hello %s, here's a random number!"+n.toString(), session.userData.name);
+        session.beginDialog('/checkintent');
+		//session.send("Hello %s, what is your intent?", session.userData.name);
     }
 ]);
 
@@ -132,4 +132,44 @@ bot.dialog('/profile', [
         session.userData.name = results.response;
         session.endDialog();
     }
+]);
+
+bot.dialog('/checkintent', [
+	function (session) {
+		builder.Prompts.text(session, 'Hello $name, how can I help you today?');
+	},
+	function (session, results) {
+		switch(results.response) {
+			case "Tell me a joke.":
+				session.beginDialog('/telljoke');
+			case "Physics":
+				session.beginDialog('/physics');
+			case: "Mathematics":
+				session.beginDialog('/mathematics');
+		}
+	}
+]);
+
+bot.dialog('/telljoke'), [
+	function(session) {
+		var n = Math.floor(Math.random() * 7);
+		builder.Prompts.text(session, jokes[n]);
+		session.endDialog();
+	}
+]);
+
+bot.dialog('/physics'), [
+	function(session) {
+		var n = Math.floor(Math.random() * 7);
+		builder.Prompts.text(session, jokes[n]);
+		session.endDialog();
+	}
+]);
+
+bot.dialog('/mathematics'), [
+	function(session) {
+		var n = Math.floor(Math.random() * 7);
+		builder.Prompts.text(session, jokes[n]);
+		session.endDialog();
+	}
 ]);
