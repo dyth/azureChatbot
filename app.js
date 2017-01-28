@@ -133,11 +133,11 @@ bot.dialog('/profile', [
 bot.dialog('/checkintent', [
 	function (session) {
 		builder.Prompts.text(session, 'Hello $name, how can I help you today?');
-		session.endDialog();
-	}
-]);
-/*	function (session, results) {
-		switch("Tell me a joke.") {
+		next();
+	},
+	function (session, results) {
+		var response = results.response;
+		switch(response) {
 			case "Tell me a joke.":
 				session.beginDialog('/telljoke');
 			case "Physics":
@@ -170,4 +170,4 @@ bot.dialog('/mathematics', [
 		builder.Prompts.text(session, jokes[n]);
 		session.endDialog();
 	}
-]);*/
+]);
