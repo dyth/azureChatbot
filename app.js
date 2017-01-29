@@ -58,8 +58,8 @@ var mathcnAnswers = [
 var physicsmcQuestions = [
 	"An object moving at 5m/s is deccelerating at 1ms^(-2). How long (in seconds) does it take to stop?",
 	"Alice and Bob are 100m apart. They move towards each other at 3m/s and 7m/s respectively. When will they pass each other?",
-	"What is the linear momentum of a 2kg object moving at 5m/s?",
-	"What is the kinetic energy of a 1kg point object moving at 5m/s?",
+	"What is the linear momentum of a 1kg object moving at 5m/s?",
+	"What is the kinetic energy of a 2kg point object moving at 5m/s?",
 	"Charlie starts from rest and accelerates at 2ms^(-2). How far has he travelled after 10s?",
 	"Dennis starts running at 2m/s, and is constantly accelerating at 2ms^(-2). How far has he travelled after 10s?",
 	"Eddie jumps up with velocity 10m/s. How high does he go? Take g to be 10m/s^(-2)."
@@ -143,6 +143,7 @@ bot.dialog('/checkintent', [
 		} else if (response == "Physics!") {
 			session.beginDialog('/physics');
 		} else if (response == "Quit!") {
+			session.send("Bye bye!");
 			session.endDialog();
 		}
 	}
