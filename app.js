@@ -225,6 +225,9 @@ bot.dialog('/checkintent', [
 			session.beginDialog('/math');
 		} else if (response == "Physics!") {
 			session.beginDialog('/physics');
+		} else if (response == "Confused!") {
+			session.send("If you're confused, ask for a joke!");
+			session.beginDialog('/checkintent');
 		} else {
 			session.send("I do not understand what you are saying. Please try again.");
 			session.beginDialog('/checkintent');
