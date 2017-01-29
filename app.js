@@ -260,7 +260,7 @@ bot.dialog('/physics', [
 			session.beginDialog('/physicsmc');
 		} else if (response == 'Electromagnetism' || response == 'electromagnetism') {
 			session.beginDialog('/physicsem');
-		} else if (response == 'Special Relativity' || response == 'special relativity') {
+		} else if (response == 'Special Relativity' || response == 'special relativity' || response == 'Special relativity') {
 			session.beginDialog('/physicssr');
 		} else {
 			session.send("Sorry! Either we do not support that topic yet or what you entered is not a valid topic! Try again!");
@@ -275,9 +275,9 @@ bot.dialog('/math', [
 	},
 	function(session, results) {
 		var response = results.response;
-		if (response == "Number Theory" || response == "number theory") {
+		if (response == "Number Theory" || response == "number theory" || response = "Number theory") {
 			session.beginDialog('/mathnt');
-		} else if (response == 'Complex Numbers' || response == "complex numbers") {
+		} else if (response == 'Complex Numbers' || response == "complex numbers" || response == "Complex numbers") {
 			session.beginDialog('/mathcn');
 		} else {
 			session.send("Sorry! Either we do not support that topic yet or what you entered is not a valid topic! Try again!");
