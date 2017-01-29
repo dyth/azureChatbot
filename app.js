@@ -146,7 +146,6 @@ bot.dialog('/telljoke', [
 	function(session) {
 		var n = Math.floor(Math.random() * 7);
 		builder.Prompts.text(session, jokes[n]);
-		builder.Prompts.text(session, "I hope you liked that joke. How else can I help?");
 		session.endDialog();
 	}
 ]);
