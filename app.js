@@ -191,7 +191,7 @@ bot.dialog('/', [
     },
 	function (session, results) {
         session.userData.name = results.response;
-    }
+    },
 	session.beginDialog('/checkintent');
 ]);
 
