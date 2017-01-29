@@ -145,6 +145,8 @@ bot.dialog('/checkintent', [
 		} else if (response == "Quit!") {
 			session.send("Bye bye!");
 			session.endDialog();
+		} else if (response == "Mathematics!") {
+			session.beginDialog('/math');
 		}
 	}
 ]);
@@ -169,6 +171,20 @@ bot.dialog('/physics', [
 			session.beginDialog('/physicsem');
 		} else if (response == 'Special Relativity') {
 			session.beginDialog('/physicssr');
+		}
+	}
+]);
+
+bot.dialog('/math', [
+	function(session) {
+		builder.Prompts.text(session, 'You have selected Mathematics. Please choose a subtopic.');
+	},
+	function(session, results) {
+		var response = results.response;
+		if (response == "Number Theory") {
+			session.beginDialog('/mathnt');
+		} else if (response == 'Complex Numbers') {
+			session.beginDialog('/mathcn');
 		}
 	}
 ]);
@@ -203,6 +219,26 @@ bot.dialog('/physicssr', [
 	}
 ]);
 
+bot.dialog('/mathnt', [
+	function(session) {
+		topic = 1;
+		var n = Math.floor(Math.random() * 7);
+		session.send(mathntQuestions[n]);
+		ans = mathntAnswers[n];
+		session.beginDialog('/answer');
+	}
+]);
+
+bot.dialog('/mathcn', [
+	function(session) {
+		topic = 2;
+		var n = Math.floor(Math.random() * 7);
+		session.send(mathcnQuestions[n]);
+		ans = mathcnAnswers[n];
+		session.beginDialog('/answer');
+	}
+]);
+
 bot.dialog('/answer', [
 	function(session) {
 		builder.Prompts.text(session, 'Please give me an answer.');
@@ -225,13 +261,5 @@ bot.dialog('/answer', [
 			session.send("Wrong! Try again!");
 			session.beginDialog('/answer');
 		}
-	}
-]);
-
-bot.dialog('/mathematics', [
-	function(session) {
-		var n = Math.floor(Math.random() * 7);
-		builder.Prompts.text(session, jokes[n]);
-		session.endDialog();
 	}
 ]);
