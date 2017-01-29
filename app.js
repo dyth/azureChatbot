@@ -175,7 +175,7 @@ bot.dialog('/physicsmc', [
 		topic = 3;
 		var n = Math.floor(Math.random() * 7);
 		session.send(physicsmcQuestions[n]);
-		ans = physicsmcAnswers[n]
+		ans = physicsmcAnswers[n];
 		session.beginDialog('/answer');
 	}
 ]);
@@ -185,7 +185,7 @@ bot.dialog('/physicsem', [
 		topic = 4;
 		var n = Math.floor(Math.random() * 3);
 		session.send(physicsemQuestions[n]);
-		ans = physicsemAnswers[n]
+		ans = physicsemAnswers[n];
 		session.beginDialog('/answer');
 	}
 ]);
@@ -195,7 +195,7 @@ bot.dialog('/physicssr', [
 		topic = 5;
 		var n = Math.floor(Math.random() * 3);
 		session.send(physicssrQuestions[n]);
-		ans = physicsmcAnswers[n]
+		ans = physicsmcAnswers[n];
 		session.beginDialog('/answer');
 	}
 ]);
