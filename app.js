@@ -138,12 +138,14 @@ bot.dialog('/checkintent', [
 	},
 	function (session, results) {
 		var response = results.response;
-		if (response == "Tell me a joke!") {
+		if (response == "Jokes!") {
 			session.beginDialog('/telljoke'); 
 		} else if (response == "Quit!") {
 			session.send("Bye bye!");
 			session.endDialog();
-		 else {
+		} else if (response == "Subject!") {
+			session.beginDialog('/subject');
+		} else {
 			session.send("I do not understand what you are saying. Please try again.");
 			session.beginDialog('/checkintent');
 		}
