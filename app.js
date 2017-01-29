@@ -153,6 +153,7 @@ bot.dialog('/telljoke', [
 ]);
 
 bot.dialog('/physics', [
+	var ans = "";
 	function(session) {
 		builder.Prompts.text(session, 'You have selected Physics. Please choose a subtopic.');
 	},
@@ -161,17 +162,17 @@ bot.dialog('/physics', [
 		if (response == "Mechanics") {
 			var n = Math.floor(Math.random() * 7);
 			session.send(physicsmcQuestions[n]);
-			var ans = physicsmcAnswers[n]
+			ans = physicsmcAnswers[n]
 			builder.Prompts.text(session, 'Please give me an answer.');
 		} else if (response == 'Electromagnetism') {
 			var n = Math.floor(Math.random() * 3);
 			session.send(physicsemQuestions[n]);
-			var ans = physicsemAnswers[n]
+			ans = physicsemAnswers[n]
 			builder.Prompts.text(session, 'Please give me an answer.');
 		} else if (response == 'Special Relativity') {
 			var n = Math.floor(Math.random() * 3);
 			session.send(physicssrQuestions[n]);
-			var ans = physicssrAnswers[n]
+			ans = physicssrAnswers[n]
 			builder.Prompts.text(session, 'Please give me an answer.');
 		}
 	},
