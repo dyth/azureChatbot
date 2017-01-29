@@ -132,7 +132,7 @@ bot.dialog('/profile', [
 
 bot.dialog('/checkintent', [
 	function (session) {
-		session.send('Hello $name, how can I help you today?');
+		builder.Prompts.text(session, 'Hello $name, how can I help you today?');
 	},
 	function (session, results) {
 		var response = results.response;
