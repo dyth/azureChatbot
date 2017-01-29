@@ -145,8 +145,8 @@ bot.dialog('/checkintent', [
 bot.dialog('/telljoke', [
 	function(session) {
 		var n = Math.floor(Math.random() * 7);
-		builder.Prompts.text(session, jokes[n]);
-		session.endDialog();
+		session.send(jokes[n]);
+		session.beginDialog('/checkintent');
 	}
 ]);
 
