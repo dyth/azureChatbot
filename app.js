@@ -342,7 +342,7 @@ bot.dialog('/answer', [
 		builder.Prompts.text(session, 'Please give me an answer.');
 	},
 	function(session,results) {
-		var response = sentence(results.response);
+		var response = question(results.response);
 		if (response == "Quit") {
 			session.beginDialog('/checkintent');
 		} else if (response == ans) {
