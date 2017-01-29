@@ -28,7 +28,7 @@ function greatest(array) {
 }
 
 function category(sentence) {
-	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s"], ["change", "topics", "subject", "different"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
+	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s", "whats"], ["change", "topics", "subject", "different", "practice", "practise", "practicing","revise","work"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
 	var categories = ["Greetings!", "Subject!", "Hint!", "Jokes!", "Quit!", "Mathematics!", "Physics!"];
 	var sentence = sentence.replace(/[.,\/#?!$%\^&\*;:{}=\-_`~()]/,"").toLowerCase()
 	if (sentence.includes(" ")) {
