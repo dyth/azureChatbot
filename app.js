@@ -27,17 +27,21 @@ function greatest(array) {
 	return index;
 }
 
-function category(sentence) {
-	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s", "whats"], ["change", "topics", "subject", "different", "practice", "practise", "practicing","revise","work"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
-	var categories = ["Greetings!", "Subject!", "Hint!", "Jokes!", "Quit!", "Mathematics!", "Physics!"];
+function spelling(sentence) {
 	var sentence = sentence.replace(/[.,\/#?!$%\^&\*;:{}=\-_`~()]/,"").toLowerCase()
 	if (sentence.includes(" ")) {
 		var words = sentence.split(" ");
 	} else {
 		var words = [sentence];
 	}
-	var counting = [];
+	return words;
+}
 
+function category(sentence) {
+	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s"], ["change", "topics", "subject", "different"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
+	var categories = ["Greetings!", "Subject!", "Hint!", "Jokes!", "Quit!", "Mathematics!", "Physics!"];
+	words = spelling(sentence);
+	var counting = [];
 	for (count = 0; count < categories.length; count++) {
 		var score = 0;
 		for (i = 0; i < words.length; i++) {
@@ -58,12 +62,7 @@ function category(sentence) {
 }
 
 function subject(sentence) {
-	var sentence = sentence.replace(/[.,\/#?!$%\^&\*;:{}=\-_`~()]/,"").toLowerCase();
-	if (sentence.includes(" ")) {
-		var words = sentence.split(" ");
-	} else {
-		var words = [sentence];
-	}
+	words = spelling(sentence);
 	var subject = ["mathematics", "maths", "sum", "math"]
 	for (i = 0; i < words.length; i++) {
 		if (subject.includes(words[i])) {
@@ -74,6 +73,19 @@ function subject(sentence) {
 	}
 	return "None!";
 }
+
+
+function question(sentence) {
+	words = spelling(sentence);
+	var quit = ["give", "up", "stop", "enough", "don't", "dont"];
+	for (i = 0; i < words.length; i++) {
+		if (quit.includes(words[i])) {
+			return "Quit";
+		}
+	}
+	return sentence;
+}
+
 
 
 var mathntQuestions = [
@@ -330,7 +342,7 @@ bot.dialog('/answer', [
 		builder.Prompts.text(session, 'Please give me an answer.');
 	},
 	function(session,results) {
-		var response = results.response;
+		var response = sentence(results.response);
 		if (response == "Quit") {
 			session.beginDialog('/checkintent');
 		} else if (response == ans) {
