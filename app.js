@@ -220,6 +220,7 @@ bot.dialog('/answer', [
 			session.send("Wrong! Try again!");
 			session.beginDialog('/answer');
 		}
+	}
 ]);
 
 bot.dialog('/mathematics', [
