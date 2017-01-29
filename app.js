@@ -142,7 +142,9 @@ bot.dialog('/checkintent', [
 			session.beginDialog('/telljoke');
 		} else if (response == "Physics!") {
 			session.beginDialog('/physics');
-		}	
+		} else if (response == "Quit!") {
+			session.endDialog();
+		}
 	}
 ]);
 
