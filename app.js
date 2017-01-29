@@ -15,6 +15,67 @@ var connector = new builder.ChatConnector
 var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
+function greatest(array) {
+	var greatest = 0;
+	var index = 0;
+	for (var i = 0; i < array.length; i++) {
+		if (greatest < array[i]) {
+			index = i;
+			greatest = array[i];
+		}
+	}
+	return index;
+}
+
+function category(sentence) {
+	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s"], ["change", "topics", "subject", "different"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
+	var categories = ["Greetings!", "Subject!", "Hint!", "Jokes!", "Quit!", "Mathematics!", "Physics!"];
+	var sentence = sentence.replace(/[.,\/#?!$%\^&\*;:{}=\-_`~()]/,"").toLowerCase()
+	if (sentence.includes(" ")) {
+		var words = sentence.split(" ");
+	} else {
+		var words = [sentence];
+	}
+	var counting = [];
+
+	for (count = 0; count < categories.length; count++) {
+		var score = 0;
+		for (i = 0; i < words.length; i++) {
+			// words into lower case .toLowerCase()
+			if (topics[count].includes(words[i])) {
+				score++;
+			}
+		}
+		// compute score of how many are in topic.
+		counting.push(score);
+	}
+	// print topic
+	if (counting[greatest(counting)] == 0) {
+		return "Confused!";
+	} else {
+		return categories[greatest(counting)];
+	}
+}
+
+function subject(sentence) {
+	var sentence = sentence.replace(/[.,\/#?!$%\^&\*;:{}=\-_`~()]/,"").toLowerCase();
+	if (sentence.includes(" ")) {
+		var words = sentence.split(" ");
+	} else {
+		var words = [sentence];
+	}
+	var subject = ["mathematics", "maths", "sum", "math"]
+	for (i = 0; i < words.length; i++) {
+		if (subject.includes(words[i])) {
+			return "Mathematics!";
+		} else if ("physics" == words[i]) {
+			return "Physics!";
+		}
+	}
+	return "None!";
+}
+
+
 var mathntQuestions = [
 	"True or False: Sum of two positive even numbers is always even.",
 	"True or False: There are infinitely many primes.",
@@ -137,7 +198,7 @@ bot.dialog('/checkintent', [
 		builder.Prompts.text(session, 'Hello ' + session.userData.name + ', how can I help you today?');
 	},
 	function (session, results) {
-		var response = results.response;
+		var response = category(results.response);
 		if (response == "Jokes!") {
 			session.beginDialog('/telljoke'); 
 		} else if (response == "Quit!") {
@@ -145,6 +206,13 @@ bot.dialog('/checkintent', [
 			session.endDialog();
 		} else if (response == "Subject!") {
 			session.beginDialog('/subject');
+		} else if (response == "Greetings!") {
+			session.send("I've said hello already... are we going to do this forever? Fine!");
+			session.beginDialog('/checkintent');
+		} else if (response == "Mathematics!") {
+			session.beginDialog('/math');
+		} else if (response == "Physics!") {
+			session.beginDialog('/physics');
 		} else {
 			session.send("I do not understand what you are saying. Please try again.");
 			session.beginDialog('/checkintent');
@@ -165,11 +233,14 @@ bot.dialog('/subject', [
 		builder.Prompts.text(session, "Which subject do you want to practice on?");
 	},
 	function (session, results) {
-		var response = results.response;
+		var response = subject(results.response);
 		if (response == "Physics!") {
 			session.beginDialog('/physics');
 		} else if (response == "Mathematics!") {
 			session.beginDialog('/math');
+		} else {
+			session.send("I don't think that is a subject! Try again!");
+			session.beginDialog('/subject');
 		}
 	}
 ]);
