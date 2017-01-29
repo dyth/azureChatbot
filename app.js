@@ -283,6 +283,9 @@ bot.dialog('/math', [
 			session.beginDialog('/mathnt');
 		} else if (response == 'Complex Numbers') {
 			session.beginDialog('/mathcn');
+		} else {
+			session.send("Sorry! Either we do not support that topic yet or what you entered is not a valid topic! Try again!");
+			session.beginDialog('/math');
 		}
 	}
 ]);
