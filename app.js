@@ -139,15 +139,11 @@ bot.dialog('/checkintent', [
 	function (session, results) {
 		var response = results.response;
 		if (response == "Tell me a joke!") {
-			session.beginDialog('/telljoke');
-		} else if (response == "Physics!") {
-			session.beginDialog('/physics');
+			session.beginDialog('/telljoke'); 
 		} else if (response == "Quit!") {
 			session.send("Bye bye!");
 			session.endDialog();
-		} else if (response == "Mathematics!") {
-			session.beginDialog('/math');
-		} else {
+		 else {
 			session.send("I do not understand what you are saying. Please try again.");
 			session.beginDialog('/checkintent');
 		}
@@ -159,6 +155,20 @@ bot.dialog('/telljoke', [
 		var n = Math.floor(Math.random() * 7);
 		session.send(jokes[n]);
 		session.beginDialog('/checkintent');
+	}
+]);
+
+bot.dialog('/subject', [
+	function(session) {
+		builder.Prompts.text(session, "Which subject do you want to practice on?");
+	},
+	function (session, results) {
+		var response = results.response;
+		if (response == "Physics!") {
+			session.beginDialog('/physics');
+		} else if (response == "Mathematics!") {
+			session.beginDialog('/math');
+		}
 	}
 ]);
 
