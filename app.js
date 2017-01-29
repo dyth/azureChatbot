@@ -38,7 +38,7 @@ function spelling(sentence) {
 }
 
 function category(sentence) {
-	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s"], ["change", "topics", "subject", "different","subjects","study","revise","work","learn"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
+	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s","ok","great","nice","wonderful","cool"], ["change", "topics", "subject", "different","subjects","study","revise","work","learn","start","started"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
 	var categories = ["Greetings!", "Subject!", "Hint!", "Jokes!", "Quit!", "Mathematics!", "Physics!"];
 	words = spelling(sentence);
 	var counting = [];
@@ -209,7 +209,7 @@ bot.dialog('/checkintent', [
 		} else if (response == "Subject!") {
 			session.beginDialog('/subject');
 		} else if (response == "Greetings!") {
-			session.send("I've said hello already... are we going to do this forever? Fine!");
+			session.send("I've said hello already... are we going to continue this pointless conversation? Make me to do something useful!");
 			session.beginDialog('/checkintent');
 		} else if (response == "Mathematics!") {
 			session.beginDialog('/math');
@@ -343,9 +343,10 @@ bot.dialog('/answer', [
 	function(session,results) {
 		var response = question(results.response);
 		if (response == "Quit") {
+			session.send("Sure! We can always try another time!");
 			session.beginDialog('/checkintent');
 		} else if (response == ans) {
-			session.send("Correct! Next question!");
+			session.send("Correct!` Next question!");
 			switch(topic) {
 				case 1: session.beginDialog('/mathnt');
 				case 2: session.beginDialog('/mathcn');
