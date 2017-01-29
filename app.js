@@ -99,9 +99,9 @@ var mathntQuestions = [
 ];
 
 var mathntAnswers = [
-	"True",
-	"True",
-	"True",
+	"true",
+	"true",
+	"true",
 	"29",
 	"5",
 	"4",
@@ -119,11 +119,11 @@ var mathcnQuestions = [
 ];
 
 var mathcnAnswers = [
-	"False",
-	"False",
+	"false",
+	"false",
 	"2",
 	"5",
-	"False",
+	"false",
 	"59",
 	"0"
 ];
@@ -155,8 +155,8 @@ var physicsemQuestions = [
 ];
 
 var physicsemAnswers = [
-	"False",
-	"True",
+	"false",
+	"true",
 	"8.99"
 ];
 
@@ -167,8 +167,8 @@ var physicssrQuestions = [
 ];
 
 var physicssrAnswers = [
-	"True",
-	"True",
+	"true",
+	"true",
 	"750GHz"
 ];
 
