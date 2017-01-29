@@ -10,11 +10,9 @@ function greatest(array) {
 	return index;
 }
 
-var sentence = "Can we change topics?";
-
 function category(sentence) {
 	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s"], ["change", "topics", "subject", "different"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"]];
-	var categories = ["greetings", "confusion", "topics", "jokes"];
+	var categories = ["greetings", "confusion", "subject", "jokes"];
 	var words = sentence.replace(/[.,\/#?!$%\^&\*;:{}=\-_`~()]/,"").toLowerCase().split(" ");
 	var counting = [];
 
@@ -32,5 +30,3 @@ function category(sentence) {
 	// print topic
 	return categories[greatest(counting)];
 }
-
-console.log(category(sentence))
