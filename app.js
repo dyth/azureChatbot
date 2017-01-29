@@ -38,7 +38,7 @@ function spelling(sentence) {
 }
 
 function category(sentence) {
-	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s"], ["change", "topics", "subject", "different","subjects","study","revise","work"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
+	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s"], ["change", "topics", "subject", "different","subjects","study","revise","work","learn"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
 	var categories = ["Greetings!", "Subject!", "Hint!", "Jokes!", "Quit!", "Mathematics!", "Physics!"];
 	words = spelling(sentence);
 	var counting = [];
@@ -197,7 +197,7 @@ bot.dialog('/', [
 
 bot.dialog('/checkintent', [
 	function (session) {
-		builder.Prompts.text(session, 'Hello ' + session.userData.name + ', how can I help you today?');
+		builder.Prompts.text(session, 'Hello ' + session.userData.name + ', how can I help you today? I can help you revise certain topics in Mathematics and Physics... I can even tell jokes too!');
 	},
 	function (session, results) {
 		var response = category(results.response);
