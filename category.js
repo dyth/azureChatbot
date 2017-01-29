@@ -11,9 +11,14 @@ function greatest(array) {
 }
 
 function category(sentence) {
-	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s"], ["change", "topics", "subject", "different"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"]];
-	var categories = ["Greetings!", "Hint!", "Subject!", "Jokes!", "Quit!"];
-	var words = sentence.replace(/[.,\/#?!$%\^&\*;:{}=\-_`~()]/,"").toLowerCase().split(" ");
+	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s"], ["change", "topics", "subject", "different"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
+	var categories = ["Greetings!", "Subject!", "Hint!", "Jokes!", "Quit!", "Mathematics!", "Physics!"];
+	var sentence = sentence.replace(/[.,\/#?!$%\^&\*;:{}=\-_`~()]/,"").toLowerCase()
+	if (sentence.includes(" ")) {
+		var words = sentence.split(" ");
+	} else {
+		var words = [sentence];
+	}
 	var counting = [];
 
 	for (count = 0; count < categories.length; count++) {
@@ -36,16 +41,19 @@ function category(sentence) {
 }
 
 function subject(sentence) {
-	if (category == "topic") {
-		var subject = ["mathematics", "maths", "sum"]
-		var words = sentence.replace(/[.,\/#?!$%\^&\*;:{}=\-_`~()]/,"").toLowerCase().split(" ");
-		for (i = 0; i < worlds.length; i++) {
-			if (subject.includes([word])) {
-				return "Mathematics!";
-			}
-		}
-		return "Physics!"
+	var sentence = sentence.replace(/[.,\/#?!$%\^&\*;:{}=\-_`~()]/,"").toLowerCase();
+	if (sentence.includes(" ")) {
+		var words = sentence.split(" ");
+	} else {
+		var words = [sentence];
 	}
+	var subject = ["mathematics", "maths", "sum", "math"]
+	for (i = 0; i < words.length; i++) {
+		if (subject.includes(words[i])) {
+			return "Mathematics!";
+		} else if ("physics" == words[i]) {
+			return "Physics!";
+		}
+	}
+	return "None!";
 }
-
-console.log(category("My hovercraft is full of eels"))
