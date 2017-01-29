@@ -206,7 +206,9 @@ bot.dialog('/answer', [
 	},
 	function(session,results) {
 		var response = results.response;
-		if (response == ans) {
+		if (response == "Quit") {
+			session.beginDialog('/checkintent');
+		} else if (response == ans) {
 			session.send("Correct! Next question!");
 			switch(topic) {
 				case 1: session.beginDialog('/mathnt');
