@@ -235,7 +235,7 @@ bot.dialog('/telljoke', [
 
 bot.dialog('/subject', [
 	function(session) {
-		builder.Prompts.text(session, "Which subject do you want to practice on?");
+		builder.Prompts.text(session, "Which subject do you want to practice on? \n (We only have physics and mathematics at the moment!)");
 	},
 	function (session, results) {
 		var response = subject(results.response);
@@ -252,29 +252,32 @@ bot.dialog('/subject', [
 
 bot.dialog('/physics', [
 	function(session) {
-		builder.Prompts.text(session, 'You have selected Physics. Please choose a subtopic.');
+		builder.Prompts.text(session, 'You have selected Physics. Please choose a subtopic from Mechanics, Electromagnetism and Special Relativity.');
 	},
 	function(session, results) {
 		var response = results.response;
-		if (response == "Mechanics") {
+		if (response == "Mechanics" || response == 'mechanics') {
 			session.beginDialog('/physicsmc');
-		} else if (response == 'Electromagnetism') {
+		} else if (response == 'Electromagnetism' || response == 'electromagnetism') {
 			session.beginDialog('/physicsem');
-		} else if (response == 'Special Relativity') {
+		} else if (response == 'Special Relativity' || response == 'special relativity') {
 			session.beginDialog('/physicssr');
+		} else {
+			session.send("Sorry! Either we do not support that topic yet or what you entered is not a valid topic! Try again!");
+			session.beginDialog('/physics');
 		}
 	}
 ]);
 
 bot.dialog('/math', [
 	function(session) {
-		builder.Prompts.text(session, 'You have selected Mathematics. Please choose a subtopic.');
+		builder.Prompts.text(session, 'You have selected Mathematics. Please choose a subtopic from Number Theory and Complex Numbers.');
 	},
 	function(session, results) {
 		var response = results.response;
-		if (response == "Number Theory") {
+		if (response == "Number Theory" || response == "number theory") {
 			session.beginDialog('/mathnt');
-		} else if (response == 'Complex Numbers') {
+		} else if (response == 'Complex Numbers' || response == "complex numbers") {
 			session.beginDialog('/mathcn');
 		} else {
 			session.send("Sorry! Either we do not support that topic yet or what you entered is not a valid topic! Try again!");
