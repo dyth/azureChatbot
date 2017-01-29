@@ -58,7 +58,7 @@ var mathcnAnswers = [
 var physicsmcQuestions = [
 	"An object moving at 5m/s is deccelerating at 1ms^(-2). How long (in seconds) does it take to stop?",
 	"Alice and Bob are 100m apart. They move towards each other at 3m/s and 7m/s respectively. When will they pass each other?",
-	"What is the linear momentum of a 1kg object moving at 5m/s?",
+	"What is the linear momentum of a 2kg object moving at 5m/s?",
 	"What is the kinetic energy of a 1kg point object moving at 5m/s?",
 	"Charlie starts from rest and accelerates at 2ms^(-2). How far has he travelled after 10s?",
 	"Dennis starts running at 2m/s, and is constantly accelerating at 2ms^(-2). How far has he travelled after 10s?",
@@ -110,6 +110,7 @@ var jokes = [
 ];
 
 var ans = "";
+var topic = 0;
 
 bot.dialog('/', [
     function (session, args, next) {
@@ -160,31 +161,65 @@ bot.dialog('/physics', [
 	function(session, results) {
 		var response = results.response;
 		if (response == "Mechanics") {
-			var n = Math.floor(Math.random() * 7);
-			session.send(physicsmcQuestions[n]);
-			ans = physicsmcAnswers[n]
-			builder.Prompts.text(session, 'Please give me an answer.');
+			session.beginDialog('/physicsmc');
 		} else if (response == 'Electromagnetism') {
-			var n = Math.floor(Math.random() * 3);
-			session.send(physicsemQuestions[n]);
-			ans = physicsemAnswers[n]
-			builder.Prompts.text(session, 'Please give me an answer.');
+			session.beginDialog('/physicsem');
 		} else if (response == 'Special Relativity') {
-			var n = Math.floor(Math.random() * 3);
-			session.send(physicssrQuestions[n]);
-			ans = physicssrAnswers[n]
-			builder.Prompts.text(session, 'Please give me an answer.');
+			session.beginDialog('/physicssr');
 		}
+	}
+]);
+
+bot.dialog('/physicsmc', [
+	function(session) {
+		topic = 3;
+		var n = Math.floor(Math.random() * 7);
+		session.send(physicsmcQuestions[n]);
+		ans = physicsmcAnswers[n]
+		session.beginDialog('/answer');
+	}
+]);
+
+bot.dialog('/physicsem', [
+	function(session) {
+		topic = 4;
+		var n = Math.floor(Math.random() * 3);
+		session.send(physicsemQuestions[n]);
+		ans = physicsemAnswers[n]
+		session.beginDialog('/answer');
+	}
+]);
+
+bot.dialog('/physicssr', [
+	function(session) {
+		topic = 5;
+		var n = Math.floor(Math.random() * 3);
+		session.send(physicssrQuestions[n]);
+		ans = physicsmcAnswers[n]
+		session.beginDialog('/answer');
+	}
+]);
+
+bot.dialog('/answer', [
+	function(session) {
+		builder.Prompts.text(session, 'Please give me an answer.');
 	},
 	function(session,results) {
 		var response = results.response;
 		if (response == ans) {
-			session.send('Correct!');
+			session.send("Correct! Next question!");
+			switch(topic) {
+				case 1: session.beginDialog('/mathnt');
+				case 2: session.beginDialog('/mathcn');
+				case 3: session.beginDialog('/physicsmc');
+				case 4: session.beginDialog('/physicsem');
+				case 5: session.beginDialog('/physicssr');
+				default: session.beginDialog('/checkintent');
+			}
 		} else {
-			session.send('Wrong!');
+			session.send("Wrong! Try again!");
+			session.beginDialog('/answer');
 		}
-		session.beginDialog('/checkintent');
-	}
 ]);
 
 bot.dialog('/mathematics', [
