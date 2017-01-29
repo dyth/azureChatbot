@@ -136,7 +136,9 @@ bot.dialog('/checkintent', [
 	},
 	function (session, results) {
 		var response = results.response;
-		session.send('Your response was %s', response);
+		if (response == "Tell me a joke!") {
+			session.beginDialog('/telljoke');
+		}
 	}
 ]);
 
