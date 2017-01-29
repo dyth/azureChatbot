@@ -109,6 +109,7 @@ var jokes = [
 	"A book just fell on my head. I've only got myshelf to blame."
 ];
 
+var ans = "";
 
 bot.dialog('/', [
     function (session, args, next) {
@@ -153,7 +154,6 @@ bot.dialog('/telljoke', [
 ]);
 
 bot.dialog('/physics', [
-	var ans = "";
 	function(session) {
 		builder.Prompts.text(session, 'You have selected Physics. Please choose a subtopic.');
 	},
