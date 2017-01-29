@@ -147,6 +147,9 @@ bot.dialog('/checkintent', [
 			session.endDialog();
 		} else if (response == "Mathematics!") {
 			session.beginDialog('/math');
+		} else {
+			session.send("I do not understand what you are saying. Please try again.");
+			session.beginDialog('/checkintent');
 		}
 	}
 ]);
