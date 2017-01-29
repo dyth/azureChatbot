@@ -138,7 +138,9 @@ bot.dialog('/checkintent', [
 		var response = results.response;
 		if (response == "Tell me a joke!") {
 			session.beginDialog('/telljoke');
-		}
+		} else if (response == "Physics!") {
+			session.beginDialog('/physics');
+			
 	}
 ]);
 
