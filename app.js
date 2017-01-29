@@ -99,9 +99,9 @@ var mathntQuestions = [
 ];
 
 var mathntAnswers = [
-	"true",
-	"true",
-	"true",
+	"True",
+	"True",
+	"True",
 	"29",
 	"5",
 	"4",
@@ -119,11 +119,11 @@ var mathcnQuestions = [
 ];
 
 var mathcnAnswers = [
-	"false",
-	"false",
+	"False",
+	"False",
 	"2",
 	"5",
-	"false",
+	"False",
 	"59",
 	"0"
 ];
@@ -155,8 +155,8 @@ var physicsemQuestions = [
 ];
 
 var physicsemAnswers = [
-	"false",
-	"true",
+	"False",
+	"True",
 	"8.99"
 ];
 
@@ -167,8 +167,8 @@ var physicssrQuestions = [
 ];
 
 var physicssrAnswers = [
-	"true",
-	"true",
+	"True",
+	"True",
 	"750GHz"
 ];
 
@@ -311,7 +311,7 @@ bot.dialog('/physicssr', [
 		topic = 5;
 		var n = Math.floor(Math.random() * 3);
 		session.send(physicssrQuestions[n]);
-		ans = physicsmcAnswers[n];
+		ans = physicssrAnswers[n];
 		session.beginDialog('/answer');
 	}
 ]);
