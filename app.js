@@ -38,7 +38,7 @@ function spelling(sentence) {
 }
 
 function category(sentence) {
-	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s","ok","great","nice","wonderful","cool"], ["change", "topics", "subject", "different","subjects","study","revise","work","learn","start","started"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum"], ["physics"]];
+	var topics = [["hello", "hey", "how", "sup", "good", "hi", "pleased", "what\'s","ok","great","nice","wonderful","cool"], ["change", "topics", "subject", "different","subjects","study","revise","work","learn","start","started"], ["don\'t", "know", "hint", "suggestion", "what", "mean", "unsure", "strange"], ["joke", "laugh", "funny", "humour","jokes"], ["stop", "enough", "quit", "halt", "no", "end", "finish"], ["mathematics", "maths", "sum","math"], ["physics"]];
 	var categories = ["Greetings!", "Subject!", "Hint!", "Jokes!", "Quit!", "Mathematics!", "Physics!"];
 	words = spelling(sentence);
 	var counting = [];
